@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:id="@+id/main_title"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#32a6ef">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/app_name"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+        <Button
+            android:id="@+id/games_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="Games"
+            android:layout_marginRight="10dp"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <com.ogaclejapan.smarttablayout.SmartTabLayout
+        android:layout_below="@id/main_title"
+        app:stl_defaultTabBackground="@color/tab_bg"
+        android:id="@+id/tbl_live"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:textAllCaps="false"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:stl_indicatorWidth="50dp"
+        app:tabMinWidth="50dp"
+        app:stl_indicatorCornerRadius="2dp"
+        app:stl_indicatorThickness="3dp"
+        app:stl_distributeEvenly="true"
+        app:stl_dividerColor="@color/lin_no_select"
+        app:stl_underlineColor="@color/lin_color"
+        app:stl_underlineThickness="1dp"
+        app:stl_indicatorColor="@color/title_selected"
+        app:stl_defaultTabTextColor="@color/selector_main_tab_text"
+        app:stl_defaultTabTextSize="14sp"
+        app:stl_drawDecorationAfterTab="true"
+        app:stl_defaultTabTextAllCaps="false"
+        />
+    <!--app:tabTextAppearance = "@style/MyCustomTabLayout"-->
+   <!-- <android.support.v4.view.ViewPager
+        android:layout_below="@id/tbl_live"
+        android:id="@+id/vp_live"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />-->
+    <com.FromFifteen.goradar.view.NewViewPager
+        android:layout_below="@id/tbl_live"
+        android:id="@+id/vp_live"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

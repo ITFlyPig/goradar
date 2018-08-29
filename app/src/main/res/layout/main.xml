@@ -1,0 +1,163 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:id="@+id/us_rela"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        >
+        <RelativeLayout
+            android:id="@+id/relative_top"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="#0499ea" >
+            <ImageView
+                android:id="@+id/why"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="55dp"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/help"/>
+            <Button
+                android:id="@+id/moreBtn"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/more"
+                android:onClick="onMoreButtonClick"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/app_name"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                />
+
+            <Button
+                android:id="@+id/searchBtn"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/search"
+                android:onClick="onSearchButtonClick"
+                />
+
+        </RelativeLayout>
+
+        <fragment
+            android:layout_below="@id/relative_top"
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:hardwareAccelerated="true"
+            android:background="#00000000"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/bannerunit"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/feimeiguo_rela"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        >
+        <RelativeLayout
+            android:id="@+id/main_title"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="#32a6ef">
+
+            <ImageView
+                android:id="@+id/help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/help"/>
+            <TextView
+                android:id="@+id/shouye"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/app_name"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+            <LinearLayout
+                android:id="@+id/linear_game"
+                android:layout_width="45dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_height="50dp">
+                <Button
+                    android:id="@+id/games_tv"
+                    android:paddingRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/game"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.ogaclejapan.smarttablayout.SmartTabLayout
+            android:layout_below="@id/main_title"
+            app:stl_defaultTabBackground="@color/tab_bg"
+            android:id="@+id/tbl_live"
+            android:shrinkColumns="2"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:textAllCaps="false"
+            app:stl_indicatorWidth="110dp"
+            app:tabGravity="center"
+            app:tabMode="fixed"
+            app:stl_defaultTabTextHorizontalPadding="1dp"
+            app:stl_indicatorAlwaysInCenter="false"
+            app:stl_indicatorInFront="false"
+            app:stl_indicatorInterpolation="smart"
+            app:stl_indicatorCornerRadius="1dp"
+            app:stl_indicatorThickness="2dp"
+            app:stl_distributeEvenly="true"
+            app:stl_dividerColor="@color/lin_no_select"
+            app:stl_underlineColor="@color/lin_color"
+            app:stl_underlineThickness="1dp"
+            app:stl_indicatorColor="@color/title_selected"
+            app:stl_defaultTabTextColor="@color/selector_main_tab_text"
+            app:stl_defaultTabTextSize="13sp"
+            app:stl_drawDecorationAfterTab="true"
+            app:stl_defaultTabTextAllCaps="false"
+            />
+
+
+        <!--app:tabTextAppearance = "@style/MyCustomTabLayout"-->
+        <android.support.v4.view.ViewPager
+            android:layout_below="@id/tbl_live"
+            android:id="@+id/vp_live"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        <!--  <com.FromFifteen.goradar.view.NewViewPager
+              android:layout_below="@id/tbl_live"
+              android:id="@+id/vp_live"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" />-->
+    </RelativeLayout>
+</RelativeLayout>

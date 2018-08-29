@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    tools:context="com.eighteen.goradar.activity.GamesActivity">
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/rl_one"
+        android:layout_below="@+id/relative_id"
+        android:layout_width="fill_parent"
+        android:layout_height="66dp"
+        android:layout_marginBottom="0.5dp"
+        android:background="#ffffff">
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/insave"/>
+        <TextView
+            android:layout_alignTop="@id/icon"
+            android:layout_toRightOf="@+id/icon"
+            android:id="@+id/iv_name"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/iv_type"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/icon"
+            android:layout_toRightOf="@+id/icon"
+            android:layout_toEndOf="@+id/icon" />
+        <ImageView
+            android:layout_alignBottom="@id/icon"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/download"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_ktv"
+        android:layout_below="@+id/rl_one"
+        android:layout_width="fill_parent"
+        android:layout_height="66dp"
+        android:layout_marginBottom="0.5dp"
+        android:gravity="center_vertical"
+        android:background="#ffffff"
+        >
+        <ImageView
+            android:id="@+id/icon2"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/logo2"/>
+        <TextView
+            android:layout_alignTop="@id/icon2"
+            android:layout_toRightOf="@id/icon2"
+            android:id="@+id/name_ktv"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/type_ktv"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/icon2"
+            android:layout_toRightOf="@+id/icon2"
+            android:layout_toEndOf="@+id/icon2" />
+        <ImageView
+            android:id="@+id/downicon"
+            android:layout_alignBottom="@id/icon2"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/download"
+            android:layout_marginRight="5dp"/>
+    </RelativeLayout>
+
+   <!-- <RelativeLayout
+        android:id="@+id/rl_threee"
+        android:layout_below="@+id/rl_ktv"
+        android:layout_width="fill_parent"
+        android:layout_height="66dp"
+        android:layout_marginBottom="0.5dp"
+        android:gravity="center_vertical"
+        android:background="#ffffff"
+        >
+        <ImageView
+            android:id="@+id/icon3"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/crafting"/>
+        <TextView
+            android:layout_alignTop="@id/icon3"
+            android:layout_toRightOf="@id/icon3"
+            android:id="@+id/name_mine"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/type_mine"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/icon3"
+            android:layout_toRightOf="@+id/icon3"
+            android:layout_toEndOf="@+id/icon3" />
+        <ImageView
+            android:layout_alignBottom="@id/icon3"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/download"
+            android:layout_marginRight="5dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_four"
+        android:layout_marginBottom="0.5dp"
+        android:layout_below="@+id/rl_threee"
+        android:layout_width="fill_parent"
+        android:layout_height="66dp"
+        android:gravity="center_vertical"
+        android:background="#ffffff"
+        >
+        <ImageView
+            android:id="@+id/icon4"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/qr"/>
+        <TextView
+            android:layout_alignTop="@id/icon4"
+            android:layout_toRightOf="@id/icon4"
+            android:id="@+id/name_qr"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/type_qr"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/icon4"
+            android:layout_toRightOf="@+id/icon4"
+            android:layout_toEndOf="@+id/icon4" />
+        <ImageView
+            android:layout_alignBottom="@id/icon4"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/download"
+            android:layout_marginRight="5dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginBottom="0.5dp"
+        android:id="@+id/rl_five"
+        android:layout_below="@+id/rl_four"
+        android:layout_width="fill_parent"
+        android:layout_height="66dp"
+        android:gravity="center_vertical"
+        android:background="#ffffff"
+
+        >
+        <ImageView
+            android:id="@+id/icon5"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/imini"/>
+        <TextView
+            android:layout_alignTop="@id/icon5"
+            android:layout_toRightOf="@id/icon5"
+            android:id="@+id/name_music"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/type_music"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/icon5"
+            android:layout_toRightOf="@+id/icon5"
+            android:layout_toEndOf="@+id/icon5" />
+        <ImageView
+            android:layout_alignBottom="@id/icon5"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/download"
+            android:layout_marginRight="5dp"/>
+    </RelativeLayout>-->
+    <!--<Button
+        android:layout_below="@+id/rl_ktv"
+        android:id="@+id/button"
+        android:text="点我"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        />-->
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"></WebView>
+</RelativeLayout>

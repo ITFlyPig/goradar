@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.eighteen.goradar.activity.UserActivity">
+
+    <RelativeLayout
+        android:id="@+id/relative_top"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#0499ea" >
+
+        <Button
+            android:id="@+id/backBtn"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13.7dp"
+            android:background="@drawable/back"
+            />
+        <EditText
+            android:id="@+id/filter_edit"
+            android:singleLine="true"
+            android:layout_toRightOf="@id/backBtn"
+            android:layout_marginLeft="18.7dp"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="#0499ea"
+            android:textColor="#ffffff"
+            android:layout_centerInParent="true"
+            android:textSize="17sp" />
+
+
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/delete"
+            >
+        </Button>
+    </RelativeLayout>
+
+    <ListView
+        android:layout_below="@id/relative_top"
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:divider="#00000000"
+        android:listSelector="#888888"
+        android:background="#ffffff"
+        android:layout_height="match_parent"/>
+    <!--android:fastScrollEnabled="false"
+        android:scrollbars="none"-->
+</RelativeLayout>

@@ -1,0 +1,228 @@
+{
+  "project_info": {
+    "project_number": "214292492188",
+    "firebase_url": "https://pokego-2d50f.firebaseio.com",
+    "project_id": "pokego-2d50f",
+    "storage_bucket": "pokego-2d50f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214292492188:android:ec501ca5612b0157",
+        "android_client_info": {
+          "package_name": "com.Fromeleven.goradar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214292492188-fi8s9n0dk0q1ncmvehg7d80sfkukemkl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCumzrrPZT_3PVK0KCfEoN-yAibB6ygQ8E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214292492188:android:6ca025dc105af5c6",
+        "android_client_info": {
+          "package_name": "com.Fiomone.gomap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214292492188-fi8s9n0dk0q1ncmvehg7d80sfkukemkl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCumzrrPZT_3PVK0KCfEoN-yAibB6ygQ8E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214292492188:android:617b03f6eeb863f1",
+        "android_client_info": {
+          "package_name": "com.RekindleA.IVCalculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214292492188-fi8s9n0dk0q1ncmvehg7d80sfkukemkl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCumzrrPZT_3PVK0KCfEoN-yAibB6ygQ8E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214292492188:android:1ae9afb3026788a5",
+        "android_client_info": {
+          "package_name": "com.Second.gomap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214292492188-fi8s9n0dk0q1ncmvehg7d80sfkukemkl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCumzrrPZT_3PVK0KCfEoN-yAibB6ygQ8E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214292492188:android:8202ea5f07fc9787",
+        "android_client_info": {
+          "package_name": "com.sixteen.goradar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214292492188-fi8s9n0dk0q1ncmvehg7d80sfkukemkl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCumzrrPZT_3PVK0KCfEoN-yAibB6ygQ8E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214292492188:android:5f3c7121900c021d",
+        "android_client_info": {
+          "package_name": "com.seventeen.goradar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214292492188-fi8s9n0dk0q1ncmvehg7d80sfkukemkl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCumzrrPZT_3PVK0KCfEoN-yAibB6ygQ8E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214292492188:android:aef97d1a337a5254",
+        "android_client_info": {
+          "package_name": "com.eighteen.goradar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214292492188-fi8s9n0dk0q1ncmvehg7d80sfkukemkl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCumzrrPZT_3PVK0KCfEoN-yAibB6ygQ8E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

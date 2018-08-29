@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="px10">20dp</dimen>
+    <dimen name="dividerHeight">5dip</dimen>
+    <dimen name="dialogleft">15dp</dimen>
+    <dimen name="webviewbottomhight">60dp</dimen>
+</resources>
