@@ -54,11 +54,13 @@
                 android:gravity="center"
                 android:text="@string/rating"
                 android:layout_height="55dp"
+                android:visibility="gone"
                 android:layout_width="fill_parent"
                 />
             <View
                 android:layout_width="0.5dp"
                 android:layout_height="55dp"
+                android:visibility="gone"
                 android:background="@color/gray"/>
             <TextView
                 android:gravity="center"

@@ -18,11 +18,11 @@
  <string name="botany">Pokedex</string>
  <string name="level_screen">Guide</string>
 
- <string name="title">Unlock Radar Map</string>
-    <string name="content">You must finish the following steps:\n1、Give us 5 Star-rating on Google Play.\n2、View a video ad.
+ <string name="title">Update to Radar Map PRO</string>
+    <string name="content">Radar Map PRO for Pokemon，find more rare pokemon.
 </string>
  <string name="rating">5 Star-rating</string>
- <string name="unity">View video ad</string>
+ <string name="unity">Free Trial 7 Days.</string>
 
  <!-- <string name="fackbook">1749569865366437_1749570985366325</string>
 <string name="fackbook_interstitial">1749569865366437_1749571595366264</string>-->
