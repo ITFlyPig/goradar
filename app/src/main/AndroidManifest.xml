@@ -36,6 +36,8 @@
     <!-- 显示顶层浮窗 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
+    <uses-permission android:name="com.android.vending.BILLING" />
+
 
     <uses-feature
         android:glEsVersion="0x00020000"

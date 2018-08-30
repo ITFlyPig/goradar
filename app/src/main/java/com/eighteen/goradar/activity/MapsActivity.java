@@ -17,6 +17,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,8 +25,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.billingclient.api.BillingClient;
+import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.SkuDetails;
+import com.eighteen.goradar.base.BaseApplication;
 import com.eighteen.goradar.fragment.VideoListFragment;
+import com.eighteen.goradar.model.EventModel;
+import com.eighteen.goradar.util.Constant;
+import com.eighteen.goradar.util.GoogleBillingUtil;
+import com.eighteen.goradar.util.PayStatusUtil;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.maps.GoogleMap;
@@ -48,6 +58,8 @@ import com.umeng.analytics.MobclickAgent;
 import com.unity3d.ads.UnityAds;
 import com.unity3d.ads.metadata.MediationMetaData;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -86,6 +98,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LinearLayout linear_game;
     private ImageView help;
     String mapUrl_en="",mapUrl_tw="",mapUrl_jp="";
+
+    private MyOnPurchaseFinishedListener mOnPurchaseFinishedListener = new MyOnPurchaseFinishedListener();//购买回调接口
+    private MyOnQueryFinishedListener mOnQueryFinishedListener = new MyOnQueryFinishedListener();//查询回调接口
+    private MyOnStartSetupFinishedListener mOnStartSetupFinishedListener = new MyOnStartSetupFinishedListener();//启动结果回调接口
+    private GoogleBillingUtil googleBillingUtil;
+    private static final String SUB_ID = "goradra_subscription_1month";//订阅的id
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +130,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mAdView = (AdView)findViewById(R.id.adView);
         AdRequest adRe = new AdRequest.Builder().build();
         mAdView.loadAd(adRe);
+
+        EventBus.getDefault().register(this);
 
     }
 
@@ -573,9 +593,199 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onDestroy() {
         unregisterReceiver(mReceiver);
+        MobclickAgent.onPause(this);
         super.onDestroy();
     }
 
+
+    //查询商品信息回调接口
+    private class MyOnQueryFinishedListener implements GoogleBillingUtil.OnQueryFinishedListener {
+        @Override
+        public void onQuerySuccess(String skuType, List<SkuDetails> list) {
+            Log.d("wyl", "查询商品信息回调接口 onQuerySuccess");
+            if (list != null) {
+                for (SkuDetails skuDetails : list) {
+                    String log = "";
+                    if (skuType == BillingClient.SkuType.INAPP) {
+                        log += "内购的商品:";
+                    } else if (skuType == BillingClient.SkuType.SUBS) {
+                        log += "订阅的商品:";
+                    }
+                    Log.d("wyl", log + skuDetails.getTitle() + " 序列号：" + skuDetails.getSku() + " 价格：" + skuDetails.getPrice());
+                }
+            }
+
+
+            //查询成功，返回商品列表，
+            //skuDetails.getPrice()获得价格(文本)
+            //skuDetails.getType()获得类型 sub或者inapp,因为sub和inapp的查询结果都走这里，所以需要判断。
+            //googleBillingUtil.getSubsPositionBySku(skuDetails.getSku())获得当前subs sku的序号
+            //googleBillingUtil.getInAppPositionBySku(skuDetails.getSku())获得当前inapp suk的序号
+        }
+
+        @Override
+        public void onQueryFail(int responseCode) {
+            Log.d("wyl", "查询商品信息回调接口 onQueryFail");
+            //查询失败
+
+        }
+
+        @Override
+        public void onQueryError() {
+            //查询错误
+            Log.d("wyl", "查询商品信息回调接口 onQueryError");
+        }
+    }
+
+    //服务初始化结果回调接口
+    private class MyOnStartSetupFinishedListener implements GoogleBillingUtil.OnStartSetupFinishedListener {
+        @Override
+        public void onSetupSuccess() {
+            Log.d("wyl", "服务初始化结果回调接口 onSetupSuccess");
+
+
+            Log.d("wyl", "开始查询已经购买商品");
+            List<Purchase> inapps = googleBillingUtil.queryPurchasesInApp();
+            if (inapps != null) {
+                for (Purchase inapp : inapps) {
+                    Log.d("wyl", "已经购买的商品：" + inapp.getSku());
+                }
+            }
+            Log.d("wyl", "开始查询已经订阅商品");
+            List<Purchase> subs = googleBillingUtil.queryPurchasesSubs();
+            if (subs != null) {
+                for (Purchase sub : subs) {
+                    Log.d("wyl", "已经订阅的商品：" + sub.getSku());
+                }
+            }
+
+            int size = googleBillingUtil.getPurchasesSizeSubs();
+            Log.d("wyl", "获取有效订阅的数量：" + size);
+            handleQueryResult(size);
+
+
+
+            Toast.makeText(BaseApplication.getInstance(), "DownPro 有效订阅的数量：" + size + ":::" + (subs == null ? 0 :subs.size()), Toast.LENGTH_LONG).show();
+
+        }
+
+        @Override
+        public void onSetupFail(int responseCode) {
+            Log.d("wyl", "服务初始化结果回调接口 onSetupFail");
+            handleQueryResult(-1);
+
+        }
+
+        @Override
+        public void onSetupError() {
+            Log.d("wyl", "服务初始化结果回调接口 onSetupError");
+            handleQueryResult(-1);
+
+        }
+    }
+
+    //购买商品回调接口
+    private class MyOnPurchaseFinishedListener implements GoogleBillingUtil.OnPurchaseFinishedListener {
+        @Override
+        public void onPurchaseSuccess(List<Purchase> list) {
+            //内购或者订阅成功,可以通过purchase.getSku()获取suk进而来判断是哪个商品
+            Log.d("wyl", "购买商品回调接口 onPurchaseSuccess");
+            if (list != null && list.size() > 0) {
+
+                //订阅成功，取消弹出框
+                EventBus.getDefault().post(new EventModel(Constant.Event.DISS_DIALOG));
+
+
+                for (Purchase purchase : list) {
+                    String sku = purchase.getSku();
+                    if (!TextUtils.isEmpty(sku) && TextUtils.equals(sku, SUB_ID)) {//订阅商品成功，记录
+                        PayStatusUtil.savePaySubStatus(true);
+                    }
+
+                    String log = "";
+                    if (googleBillingUtil.handlePurchase(purchase)) {
+                        log = log + "商品序列号：" + purchase.getSku();
+                        Log.d("wyl", " 尚明" + "购买的商品通过验证：" + purchase.getSignature());
+                    } else {
+                        log = log + "商品序列号：" + purchase.getSku();
+                        Log.d("wyl", "购买的商品未通过验证：" + purchase.getSignature());
+                    }
+                    Log.d("wyl", "购买或者订阅成功：" + log);
+                }
+            }
+        }
+
+        @Override
+        public void onPurchaseFail(int responseCode) {
+            Log.d("wyl", "购买商品回调接口 onPurchaseFail：" + responseCode);
+
+        }
+
+        @Override
+        public void onPurchaseError() {
+            Log.d("wyl", "购买商品回调接口 onPurchaseError");
+
+        }
+
+    }
+
+
+
+
+    @Subscribe
+    public void onSubEvent(EventModel eventModel) {
+        if (eventModel == null) {
+            return;
+
+        }
+        if (eventModel.code == Constant.Event.QUERY_SUB) {
+            if (googleBillingUtil != null && googleBillingUtil.isReady()) {
+                int size = googleBillingUtil.getPurchasesSizeSubs();
+                handleQueryResult(size);
+            } else {//走正常的流程
+
+                initGoogleBilling();
+            }
+        } else if (eventModel.code == Constant.Event.QUERY_SUB_AND_BUY) {//先查询订阅是否有效，无效的话开始订阅，有效的话取消弹窗
+            if (googleBillingUtil != null && googleBillingUtil.isReady()) {
+                int size = googleBillingUtil.getPurchasesSizeSubs();
+                handleQueryResult(size);
+            } else {//走正常的流程
+
+                initGoogleBilling();
+            }
+        }
+
+    }
+
+    /**
+     * 处理查询的结果
+     * @param size
+     */
+    private void handleQueryResult(int size) {
+        Log.d("wyl", "获取有效订阅的数量：" + size);
+        PayStatusUtil.savePaySubStatus(size > 0 ? true : false);
+
+        if (PayStatusUtil.isSubAvailable()) {//取消弹出弹窗
+            EventBus.getDefault().post(new EventModel(Constant.Event.DISS_DIALOG));
+        } else {//开始订阅
+            googleBillingUtil.purchaseSubs(this, SUB_ID);
+        }
+
+    }
+
+
+    /**
+     * 初始化谷歌内购
+     */
+    private void initGoogleBilling() {
+        GoogleBillingUtil.cleanListener();
+        googleBillingUtil = GoogleBillingUtil.getInstance()
+                .setOnPurchaseFinishedListener(mOnPurchaseFinishedListener)
+                .setOnQueryFinishedListener(mOnQueryFinishedListener)
+                .setOnStartSetupFinishedListener(mOnStartSetupFinishedListener)
+                .build();
+    }
 
 
 }

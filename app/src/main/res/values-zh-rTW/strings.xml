@@ -10,9 +10,8 @@
     <string name="recommend">推薦</string>
     <string name="botany">圖鑑 </string>
     <string name="level_screen">攻略</string>
-    <string name="title">解鎖寶可夢地圖</string>
-    <string name="content">您必須完成下面任務才能使用雷達地圖：\n1、給我們應用程式5星評分以示鼓勵\n
-          2、觀看一段視頻廣告</string>
+    <string name="title">取得專業版寶可夢雷達地圖</string>
+    <string name="content">專業版寶可夢雷達地圖，抓住更多稀有的精靈寶可夢</string>
     <string name="rating">5星評分鼓勵</string>
-    <string name="unity">觀看視頻廣告</string>
+    <string name="unity">免費試用7天</string>
 </resources>

@@ -6,11 +6,21 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.billingclient.api.BillingClient;
+import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.SkuDetails;
+import com.eighteen.goradar.base.BaseApplication;
+import com.eighteen.goradar.model.EventModel;
+import com.eighteen.goradar.util.Constant;
+import com.eighteen.goradar.util.GoogleBillingUtil;
+import com.eighteen.goradar.util.PayStatusUtil;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.eighteen.goradar.adapter.MyAdapter;
 import com.eighteen.goradar.fragment.BaseFragment;
@@ -21,6 +31,9 @@ import com.eighteen.goradar.util.Advertisement;
 import com.eighteen.goradar.view.NewViewPager;
 import com.eighteen.goradar.R;
 import com.umeng.analytics.MobclickAgent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
     private MapFragment dynamicFragment;
     private PokedexFragment staticFragment;
     private GuideFragment wuWuFragment;
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +73,13 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(MainActivity.this);
 //        getSupportActionBar().hide();
         init();
+
+
+
+
     }
+
+
 
     private void init(){
 
@@ -118,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onPause() {
-        MobclickAgent.onPause(this);
+
         super.onPause();
     }
 
@@ -130,4 +156,9 @@ public class MainActivity extends AppCompatActivity {
         MobclickAgent.onResume(this);
 
     }
+
+
+
+
+
 }

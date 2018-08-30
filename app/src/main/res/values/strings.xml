@@ -1,32 +1,31 @@
 <resources>
- <string name="app_name">GO Radar</string>
+    <string name="app_name">GO Radar</string>
 
 
- <string name="okay">OK</string>
- <string name="dialogtitle">No Internet Connection </string>
- <string name="dialogcontent">You must be connected to the internet to visit some page.</string>
- <string name="bannerunit">ca-app-pub-2132020239925709/4306374471</string>
- <string name="ad_unit_id">ca-app-pub-2132020239925709/5783107677</string>
- <string name="openscreen">ca-app-pub-2132020239925709/7259840870</string>
+    <string name="okay">OK</string>
+    <string name="dialogtitle">No Internet Connection </string>
+    <string name="dialogcontent">You must be connected to the internet to visit some page.</string>
+    <string name="bannerunit">ca-app-pub-2132020239925709/4306374471</string>
+    <string name="ad_unit_id">ca-app-pub-2132020239925709/5783107677</string>
+    <string name="openscreen">ca-app-pub-2132020239925709/7259840870</string>
 
- <string name="skip">Skip</string>
+    <string name="skip">Skip</string>
 
 
- <string name="homepage">首页</string>
- <string name="corpe">Map</string>
- <string name="recommend">App</string>
- <string name="botany">Pokedex</string>
- <string name="level_screen">Guide</string>
+    <string name="homepage">首页</string>
+    <string name="corpe">Map</string>
+    <string name="recommend">App</string>
+    <string name="botany">Pokedex</string>
+    <string name="level_screen">Guide</string>
 
- <string name="title">Update to Radar Map PRO</string>
+    <string name="title">Update to Radar Map PRO</string>
     <string name="content">Radar Map PRO for Pokemon，find more rare pokemon.
 </string>
- <string name="rating">5 Star-rating</string>
- <string name="unity">Free Trial 7 Days.</string>
+    <string name="rating">5 Star-rating</string>
+    <string name="unity">Free Trial 7 Days.</string>
 
- <!-- <string name="fackbook">1749569865366437_1749570985366325</string>
-<string name="fackbook_interstitial">1749569865366437_1749571595366264</string>-->
-
+    <!-- <string name="fackbook">1749569865366437_1749570985366325</string>
+   <string name="fackbook_interstitial">1749569865366437_1749571595366264</string>-->
 
 
     <string name="potential_tooltip" formatted="false">
@@ -34,44 +33,44 @@
             Level: %.1f\nAtk: %d (%d); Def: %d (%d); Stam: %d (%d)
         ]]>
     </string>
- <!--<string name="bannerunit">ca-app-pub-9224978836240566/7644862331</string>
-<string name="ad_unit_id">ca-app-pub-9224978836240566/9121595530</string>
-<string name="native_ad_id">ca-app-pub-9224978836240566/1598328737</string>-->
+    <!--<string name="bannerunit">ca-app-pub-9224978836240566/7644862331</string>
+   <string name="ad_unit_id">ca-app-pub-9224978836240566/9121595530</string>
+   <string name="native_ad_id">ca-app-pub-9224978836240566/1598328737</string>-->
 
 
- <string name="rationale_camera">This app needs access to your camera so you can take pictures.</string>
- <string name="rationale_location_contacts">This app needs access to your location and contacts to know where and who you are.</string>
- <string name="rationale_sms">This app needs access to your sms to read all your great messages.</string>
- <string name="rationale_ask_again">This app may not work correctly without the requested permissions. Open the app settings screen to modify app permissions.</string>
- <string name="title_settings_dialog">Permissions Required</string>
- <string name="setting">Settings</string>
- <string name="cancel">Cancel</string>
- <string name="settings_dialog_canceled">Settings dialog canceled</string>
- <string name="returned_from_app_settings_to_activity">Returned from app settings to MainActivity</string>
- <string name="has_read_sms_permission">Has read sms permission: %b</string>
+    <string name="rationale_camera">This app needs access to your camera so you can take pictures.</string>
+    <string name="rationale_location_contacts">This app needs access to your location and contacts to know where and who you are.</string>
+    <string name="rationale_sms">This app needs access to your sms to read all your great messages.</string>
+    <string name="rationale_ask_again">This app may not work correctly without the requested permissions. Open the app settings screen to modify app permissions.</string>
+    <string name="title_settings_dialog">Permissions Required</string>
+    <string name="setting">Settings</string>
+    <string name="cancel">Cancel</string>
+    <string name="settings_dialog_canceled">Settings dialog canceled</string>
+    <string name="returned_from_app_settings_to_activity">Returned from app settings to MainActivity</string>
+    <string name="has_read_sms_permission">Has read sms permission: %b</string>
 
 
- <!-- <string name="onTrafficClick">是否隐藏交通流量</string>
-<string name="text_cbMyLocationButton">是否隐藏自己的位置</string>
-<string name="text_cbMyLocationlayer">是否隐藏自己的位置图层</string>
-<string name="text_cbZoomControls">是否隐藏缩放按钮</string>
-<string name="text_cbCompass">是否隐藏缩指南针</string>
-<string name="text_cbScrollGestures">地图缩放手势</string>
-<string name="text_cbZoomGestures">地图滚动手势</string>
-<string name="text_cbRotateGestures">地图旋转手势</string>
-<string name="text_cbTiltGestures">地图倾斜手势</string>-->
- <string name="pref_general_category_title">General</string>
- <string name="pref_update_category_title">Updates</string>
- <string name="pref_other_category_title">Other</string>
- <string name="pref_enable_vibrate">Vibrate</string>
- <string name="pref_enable_vibrate_summary">Enable haptic feedback when interacting with PokeValue</string>
- <string name="pref_auto_update">Auto Update</string>
- <string name="pref_auto_update_summary">Enable automatic updates of PokeValue</string>
- <string name="pref_check_for_updates">Check For Updates</string>
- <string name="pref_release_notes">View Release Notes</string>
- <string name="pref_report_bug">Report an Issue</string>
- <string name="pref_app_version">PokeValue Version</string>
+    <!-- <string name="onTrafficClick">是否隐藏交通流量</string>
+   <string name="text_cbMyLocationButton">是否隐藏自己的位置</string>
+   <string name="text_cbMyLocationlayer">是否隐藏自己的位置图层</string>
+   <string name="text_cbZoomControls">是否隐藏缩放按钮</string>
+   <string name="text_cbCompass">是否隐藏缩指南针</string>
+   <string name="text_cbScrollGestures">地图缩放手势</string>
+   <string name="text_cbZoomGestures">地图滚动手势</string>
+   <string name="text_cbRotateGestures">地图旋转手势</string>
+   <string name="text_cbTiltGestures">地图倾斜手势</string>-->
+    <string name="pref_general_category_title">General</string>
+    <string name="pref_update_category_title">Updates</string>
+    <string name="pref_other_category_title">Other</string>
+    <string name="pref_enable_vibrate">Vibrate</string>
+    <string name="pref_enable_vibrate_summary">Enable haptic feedback when interacting with PokeValue</string>
+    <string name="pref_auto_update">Auto Update</string>
+    <string name="pref_auto_update_summary">Enable automatic updates of PokeValue</string>
+    <string name="pref_check_for_updates">Check For Updates</string>
+    <string name="pref_release_notes">View Release Notes</string>
+    <string name="pref_report_bug">Report an Issue</string>
+    <string name="pref_app_version">PokeValue Version</string>
 
- <!-- TODO: Remove or change this placeholder text -->
- <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

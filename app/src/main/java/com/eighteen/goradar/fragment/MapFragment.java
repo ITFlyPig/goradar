@@ -30,6 +30,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.eighteen.goradar.model.EventModel;
+import com.eighteen.goradar.util.Constant;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.eighteen.goradar.PreferenceUtil;
@@ -48,6 +51,8 @@ import com.vungle.publisher.EventListener;
 import com.vungle.publisher.VunglePub;
 
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -363,48 +368,29 @@ public class MapFragment extends BaseFragment {
         View view = View.inflate(MapFragment.this.getActivity(), R.layout.dialogunlock, null);
         rating_but = (TextView)view.findViewById(R.id.rating_but);
         watch_video_ad_but = (TextView)view.findViewById(R.id.watch_video_ad_but);
-        rating_but.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isClickrating=false;
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.eighteen.goradar")));
-                } catch (android.content.ActivityNotFoundException anfe) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + "com.eighteen.goradar")));
-                }
-                if (isClickrating==false&&isClickads==false){
-                    Log.i(TAG, isClickrating+"if: "+isClickads);
-                    PreferenceUtil.getInstance().put("lock","true");
-                    dialog.dismiss();
-                }else{
-                    Log.i(TAG, isClickrating+"delete_music_Dialog: "+isClickads);
-                }
-            }
-        });
+//        rating_but.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                isClickrating=false;
+//                try {
+//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.eighteen.goradar")));
+//                } catch (android.content.ActivityNotFoundException anfe) {
+//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + "com.eighteen.goradar")));
+//                }
+//                if (isClickrating==false&&isClickads==false){
+//                    Log.i(TAG, isClickrating+"if: "+isClickads);
+//                    PreferenceUtil.getInstance().put("lock","true");
+//                    dialog.dismiss();
+//                }else{
+//                    Log.i(TAG, isClickrating+"delete_music_Dialog: "+isClickads);
+//                }
+//            }
+//        });
         watch_video_ad_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isClickads=false;
-                if(UnityAds.isReady()) {
-                    MediationMetaData mediationMetaData = new MediationMetaData(MapFragment.this.getActivity());
-                    mediationMetaData.setOrdinal(1);
-                    mediationMetaData.commit();
-                    UnityAds.show(MapFragment.this.getActivity());
-                }
-                PlayerMetaData playerMetaData = new PlayerMetaData(MapFragment.this.getActivity());
-                playerMetaData.setServerId("goradar18");
-                playerMetaData.commit();
-                MediationMetaData ordinalMetaData = new MediationMetaData(MapFragment.this.getActivity());
-                ordinalMetaData.setOrdinal(ordinal++);
-                ordinalMetaData.commit();
-                UnityAds.show(MapFragment.this.getActivity(), interstitialPlacementId);
-                if (isClickrating==false&&isClickads==false){
-                    PreferenceUtil.getInstance().put("lock","true");
-                    dialog.dismiss();
-                    Log.i(TAG, isClickrating+"if: "+isClickads);
-                }else{
-                    Log.i(TAG, isClickrating+"delete_music_Dialog: "+isClickads);
-                }
+                //开始查询订阅是否有效
+                EventBus.getDefault().post(new EventModel(Constant.Event.QUERY_SUB_AND_BUY));
             }
         });
 
@@ -483,6 +469,8 @@ public class MapFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -513,6 +501,8 @@ public class MapFragment extends BaseFragment {
 
     @Override
     protected void initVariables(Bundle savedInstanceState) {
+
+        EventBus.getDefault().register(this);
 
     }
 
@@ -572,6 +562,23 @@ public class MapFragment extends BaseFragment {
             Log.d("SecondListener", String.format("This is a second event listener! Ad playability has changed, and is now: %s", isAdPlayable));
         }
     };
+
+
+    @Subscribe
+    public void onEvent(EventModel eventModel) {
+        if (eventModel == null) {
+            return;
+        }
+        if (eventModel.code == Constant.Event.SHOW_DIALOG) {
+            delete_music_Dialog();
+        } else if (eventModel.code == Constant.Event.DISS_DIALOG) {
+            Log.d("wly", "订阅成功，隐藏弹出框");
+            if (dialog != null) {
+                dialog.dismiss();
+            }
+        }
+
+    }
 
 
 
