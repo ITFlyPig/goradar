@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -90,6 +91,8 @@ public class MapFragment extends BaseFragment {
     final VunglePub vunglePub = VunglePub.getInstance();
     //将读出的字符串转换成JSONobject
     String mapUrl_en ="",mapUrl_tw="",mapUrl_jp="";
+    private static boolean mShowed = false;
+
     @Override
     protected int getLayoutResource() {
         return R.layout.activity_maps;
@@ -214,15 +217,15 @@ public class MapFragment extends BaseFragment {
         UnityAds.initialize(MapFragment.this.getActivity(), "1243120", unityAdsListener);
         String islock =  (String) PreferenceUtil.getInstance().get("lock","2");
         Log.i(TAG, "islock: "+islock);
-        if(!islock.equals("true")){//没有设置模式，默认随机
-            new Handler().postDelayed(new Runnable() {
-                public void run() {
-                    Log.i(TAG, "5秒到了 ");
-                    delete_music_Dialog();
-                }
-            }, 5000);
-
-        }
+//        if(!islock.equals("true")){//没有设置模式，默认随机
+//            new Handler().postDelayed(new Runnable() {
+//                public void run() {
+//                    Log.i(TAG, "5秒到了 ");
+//                    delete_music_Dialog();
+//                }
+//            }, 5000);
+//
+//        }
 
         //加载需要显示的网页
         if (language.equals("zh")){
@@ -502,8 +505,15 @@ public class MapFragment extends BaseFragment {
     @Override
     protected void initVariables(Bundle savedInstanceState) {
 
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
 
+        delete_music_Dialog();
     }
 
     @Override

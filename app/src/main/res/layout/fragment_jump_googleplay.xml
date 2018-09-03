@@ -49,6 +49,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/rl_ktv"
         android:layout_below="@+id/rl_one"
         android:layout_width="fill_parent"

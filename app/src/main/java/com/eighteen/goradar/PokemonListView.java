@@ -13,7 +13,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
+import com.eighteen.goradar.model.EventModel;
+import com.eighteen.goradar.util.Constant;
+import com.eighteen.goradar.util.PayStatusUtil;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
@@ -26,12 +30,15 @@ import com.eighteen.goradar.util.NetReceiver;
 import com.eighteen.goradar.R;
 import com.umeng.analytics.MobclickAgent;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 
-public class PokemonListView extends Activity implements SearchView.OnQueryTextListener {
+public class PokemonListView extends Activity implements SearchView.OnQueryTextListener, View.OnClickListener {
 
     private InterstitialAd interstitial;
     private AdView mAdView;
@@ -47,6 +54,7 @@ public class PokemonListView extends Activity implements SearchView.OnQueryTextL
     //获取db数据库
     private UserDao mUserDao;
     private List<SearchModel> listdata;
+    private TextView tvSub;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +72,8 @@ public class PokemonListView extends Activity implements SearchView.OnQueryTextL
 
         initfindid();
 
+        EventBus.getDefault().register(this);
+
     }
 
     public void onMoreButtonClick(View v){
@@ -72,6 +82,8 @@ public class PokemonListView extends Activity implements SearchView.OnQueryTextL
 
 
     private void   initfindid(){
+        tvSub = findViewById(R.id.tv_sub);
+        tvSub.setOnClickListener(this);
 
         AssetsDatabaseManager.initManager(PokemonListView.this);
         // 插屏广告
@@ -85,6 +97,11 @@ public class PokemonListView extends Activity implements SearchView.OnQueryTextL
         AdRequest adRequest = new AdRequest.Builder().build();
         // 最后，请求广告。
         mAdView.loadAd(adRequest);
+        if (PayStatusUtil.isSubAvailable()) {
+            mAdView.setVisibility(View.GONE);
+        } else {
+            mAdView.setVisibility(View.VISIBLE);
+        }
 
         myPokedex = new PokemonData();
         pNames = new ArrayList<>();
@@ -132,6 +149,7 @@ public class PokemonListView extends Activity implements SearchView.OnQueryTextL
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
                     //先拿到单例模式里面的 实例  因为封装的是MAP  传入KEY去拿值 在显现广告
+                    if (!PayStatusUtil.isSubAvailable())
                     Advertisement.getInstance().show(getString(R.string.ad_unit_id));
                 } catch (Exception e) {
                     Log.d("tag", "setContentView: 显示广告失败");
@@ -176,6 +194,7 @@ public class PokemonListView extends Activity implements SearchView.OnQueryTextL
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(mReceiver);
+        EventBus.getDefault().unregister(this);
 //        stopService(new Intent(PokemonListView.this, CalculateOverlayService.class));
     }
 
@@ -214,5 +233,35 @@ public class PokemonListView extends Activity implements SearchView.OnQueryTextL
         return super.onKeyDown(keyCode, event);
     }
 
-    
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_sub:
+                //开始订阅
+                EventBus.getDefault().post(new EventModel(Constant.Event.QUERY_SUB_AND_BUY));
+                break;
+        }
+    }
+
+
+    @Subscribe
+    public void onEvent(EventModel eventModel) {
+        if (eventModel == null) {
+            return;
+        }
+        if (eventModel.code == Constant.Event.DISS_DIALOG) {
+            if (mAdView != null) {
+                mAdView.setVisibility(View.GONE);
+            }
+
+        } if (eventModel.code == Constant.Event.SHOW_DIALOG) {
+            if (mAdView != null) {
+                mAdView.setVisibility(View.VISIBLE);
+            }
+        }
+
+    }
+
+
 }

@@ -32,7 +32,7 @@ public class VideoDao {
 			Cursor cursor = db.rawQuery(sql, null);//防止没有这个表，导致崩溃
 			list = parseCursorToList(cursor);
 		} catch (Exception e) {
-			Log.i(TAG, "queryAll: "+e);
+			e.printStackTrace();
 		}
 		return list;
 	}
@@ -101,8 +101,8 @@ public class VideoDao {
 				model.setId(cursor.getString(cursor.getColumnIndex("ID")));
 				model.setUrl(cursor.getString(cursor.getColumnIndex("URL")));
 				model.setTitle(cursor.getString(cursor.getColumnIndex("Title")));
-				model.setLogo_URL(cursor.getString(cursor.getColumnIndex("logourl")));
-				model.setImageurl(cursor.getString(cursor.getColumnIndex("imgeurl")));
+				model.setLogo_URL(cursor.getString(cursor.getColumnIndex("Logo_URL")));
+//				model.setImageurl(cursor.getString(cursor.getColumnIndex("imgeurl")));
 				list.add(model);
 			}
 		}

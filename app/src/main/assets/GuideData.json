@@ -13,9 +13,12 @@
     "url_pt-pt":"http://gujia.kuaizhan.com/20/59/p374752677c1297",
     "url_ms":"http://gujia.kuaizhan.com/21/28/p37475261752530",
     "url_th":"http://gujia.kuaizhan.com/78/6/p374752572f7c70",
-    "mapUrl_en":"https://pokemon-radar.net/",
+    "mapUrl_en":"https://www.pokemap.net/",
     "mapUrl_zh-tw":"https://www.pokevision.hk/#23.200960808078566,120.9814453125",
-    "mapUrl_jp":"https://pmap.kuku.lu/#36.177791,138.142090,7",
+    "mapUrl_jp":"https://www.pokemap.net/",
     "helpUrl_zh-tw":"https://gujia.kuaizhan.com/1/52/p366497826520fc",
-    "helpUrl_jp":"https://gujia.kuaizhan.com/91/84/p4328830328cb06"
+    "helpUrl_jp":"https://gujia.kuaizhan.com/91/84/p4328830328cb06",
+    "map2Url_en":"https://pokehuntr.com/",
+    "map2Url_zh-tw":"https://www.pokemap.net/",
+    "map2Url_jp":"https://pokehuntr.com/"
 }

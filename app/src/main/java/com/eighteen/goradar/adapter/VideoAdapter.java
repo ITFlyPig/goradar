@@ -87,23 +87,27 @@ public class VideoAdapter extends BaseAdapter {
         if (!TextUtils.isEmpty(list.get(position).getTitle())){
             holder.name.setText(list.get(position).getTitle());
         }
-        if (language.equals("en")){
-            if (country.equals("AS")){
+//        if (language.equals("en")){
+//            if (country.equals("AS")){
 //                holder.imageView.setImageResource(R.drawable.l0001);
-                if(list.get(position).getBitmap()==null){
-                    Glide.with(context).load(R.drawable.load).into(holder.imageView);
-                    new DownloadFileFromURL(holder.imageView,position,list).execute(list.get(position).getImageurl());
+//                if(list.get(position).getBitmap()==null){
+//                    Glide.with(context).load(R.drawable.load).into(holder.imageView);
+//                    new DownloadFileFromURL(holder.imageView,position,list).execute(list.get(position).getImageurl());
+//
+//                }else{
+//                    holder.imageView.setImageBitmap(list.get(position).getBitmap());
+//                }
+//            }else{
+//                Glide.with(context).load(list.get(position).getLogo_URL()).into(holder.imageView);
+//            }
+//
+//        }else{
+//            Glide.with(context).load(list.get(position).getLogo_URL()).into(holder.imageView);
+//        }
 
-                }else{
-                    holder.imageView.setImageBitmap(list.get(position).getBitmap());
-                }
-            }else{
-                Glide.with(context).load(list.get(position).getLogo_URL()).into(holder.imageView);
-            }
+        Glide.with(context).load(list.get(position).getLogo_URL()).into(holder.imageView);
 
-        }else{
-            Glide.with(context).load(list.get(position).getLogo_URL()).into(holder.imageView);
-        }
+
         convertView.setBackgroundResource(R.drawable.listselectortwo);
         return convertView;
     }

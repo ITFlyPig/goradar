@@ -17,12 +17,14 @@ import android.widget.TextView;
 import com.eighteen.goradar.R;
 import com.eighteen.goradar.base.BaseActivity;
 import com.eighteen.goradar.player.YoutubePlayerView;
+import com.eighteen.goradar.util.PayStatusUtil;
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdChoicesView;
 import com.facebook.ads.AdError;
 import com.facebook.ads.AdListener;
 import com.facebook.ads.MediaView;
 import com.facebook.ads.NativeAd;
+import com.facebook.ads.NativeAdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
@@ -85,8 +87,15 @@ public class YoutubeActivity extends BaseActivity {
                 super.onAdFailedToLoad(i);
                 Log.i("tag", "onAdFailedToLoad: "+i);
             }
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                mInterstitialAd.show();
+            }
         });
         mInterstitialAd.loadAd(adReques);
+
         rll_title=(LinearLayout)findViewById(R.id.rll_title);
         String videoID = YoutubePlayerView.parseIDfromVideoUrl(videoUrl);
         Log.i("Alex","视频的ID是=="+videoID);
@@ -105,7 +114,7 @@ public class YoutubeActivity extends BaseActivity {
     }
 
     public void onClickBack(View v){
-        if (mInterstitialAd.isLoaded()) {
+        if (mInterstitialAd.isLoaded() && !PayStatusUtil.isSubAvailable()) {
             mInterstitialAd.show();
             finish();
         }else{
@@ -184,7 +193,72 @@ public class YoutubeActivity extends BaseActivity {
 
     private void showNativeAd() {
 
-        nativeAd = new NativeAd(YoutubeActivity.this, "308810106228902_324369844672928");
+        nativeAd = new NativeAd(YoutubeActivity.this, "537944893042361_702877963215719");
+        nativeAd.setAdListener(new NativeAdListener() {
+            @Override
+            public void onMediaDownloaded(Ad ad) {
+
+            }
+
+            @Override
+            public void onError(Ad ad, AdError adError) {
+                Log.e(TAG, "onError: "+adError.getErrorCode()+"----"+adError.getErrorMessage());
+
+            }
+
+            @Override
+            public void onAdLoaded(Ad ad) {
+                // Add the Ad view into the ad container.
+                nativeAdContainer = (LinearLayout) findViewById(R.id.native_ad_container);
+                LayoutInflater inflater = LayoutInflater.from(YoutubeActivity.this);
+                adView = (LinearLayout) inflater.inflate(R.layout.native_ad_layout, nativeAdContainer, false);
+                nativeAdContainer.addView(adView);
+
+                // Create native UI using the ad metadata.
+                ImageView nativeAdIcon = (ImageView) adView.findViewById(R.id.native_ad_icon);
+                TextView nativeAdTitle = (TextView) adView.findViewById(R.id.native_ad_title);
+                MediaView nativeAdMedia = (MediaView) adView.findViewById(R.id.native_ad_media);
+                TextView nativeAdSocialContext = (TextView) adView.findViewById(R.id.native_ad_social_context);
+                TextView nativeAdBody = (TextView) adView.findViewById(R.id.native_ad_body);
+                Button nativeAdCallToAction = (Button) adView.findViewById(R.id.native_ad_call_to_action);
+
+                // Set the Text.
+//                nativeAdTitle.setText(nativeAd.getAdTitle());
+                nativeAdSocialContext.setText(nativeAd.getAdSocialContext());
+//                nativeAdBody.setText(nativeAd.getAdBody());
+                nativeAdCallToAction.setText(nativeAd.getAdCallToAction());
+
+                // Download and display the ad icon.
+                NativeAd.Image adIcon = nativeAd.getAdIcon();
+//                NativeAd.downloadAndDisplayImage(adIcon, nativeAdIcon);
+
+                // Download and display the cover image.
+//                nativeAdMedia.setNativeAd(nativeAd);
+
+                // Add the AdChoices icon
+                LinearLayout adChoicesContainer = (LinearLayout) findViewById(R.id.ad_choices_container);
+                AdChoicesView adChoicesView = new AdChoicesView(YoutubeActivity.this, nativeAd, true);
+                adChoicesContainer.addView(adChoicesView);
+
+                // Register the Title and CTA button to listen for clicks.
+                List<View> clickableViews = new ArrayList<>();
+                clickableViews.add(nativeAdTitle);
+                clickableViews.add(nativeAdCallToAction);
+//                nativeAd.registerViewForInteraction(nativeAdContainer, clickableViews);
+//                nativeAd.loadAd(NativeAd.MediaCacheFlag.ALL);
+
+            }
+
+            @Override
+            public void onAdClicked(Ad ad) {
+
+            }
+
+            @Override
+            public void onLoggingImpression(Ad ad) {
+
+            }
+        });
 
 //        nativeAd.setAdListener(new AdListener() {
 //            @Override

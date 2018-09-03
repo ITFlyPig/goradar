@@ -7,6 +7,7 @@
     <string name="dialogtitle">未連接網絡</string>
     <string name="dialogcontent">連接網絡後才能訪問某些頁面哦！</string>
     <string name="corpe">地圖</string>
+    <string name="map">地圖2</string>
     <string name="recommend">推薦</string>
     <string name="botany">圖鑑 </string>
     <string name="level_screen">攻略</string>

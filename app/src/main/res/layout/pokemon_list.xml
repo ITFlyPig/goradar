@@ -32,6 +32,16 @@
             android:textSize="18sp"
             android:textStyle="bold"/>
 
+        <TextView
+            android:id="@+id/tv_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Free Trial PRO"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+
 
 
     </RelativeLayout>

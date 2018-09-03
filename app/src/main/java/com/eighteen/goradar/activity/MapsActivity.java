@@ -31,6 +31,7 @@ import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.SkuDetails;
 import com.eighteen.goradar.base.BaseApplication;
+import com.eighteen.goradar.fragment.MapTwoFragment;
 import com.eighteen.goradar.fragment.VideoListFragment;
 import com.eighteen.goradar.model.EventModel;
 import com.eighteen.goradar.util.Constant;
@@ -89,6 +90,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private MyAdapter liveHomepageAdapter;
     private FragmentManager mFragmentManager;
     private MapFragment dynamicFragment;
+    private MapTwoFragment mapFragment2;
     private PokedexFragment staticFragment;
     private GuideFragment wuWuFragment;
     private JumpGooglePlayFragment jumpGooglePlayFragment;
@@ -103,7 +105,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private MyOnQueryFinishedListener mOnQueryFinishedListener = new MyOnQueryFinishedListener();//查询回调接口
     private MyOnStartSetupFinishedListener mOnStartSetupFinishedListener = new MyOnStartSetupFinishedListener();//启动结果回调接口
     private GoogleBillingUtil googleBillingUtil;
-    private static final String SUB_ID = "goradra_subscription_1month";//订阅的id
+    private static final String SUB_ID = "goradar_subscription02_1month";//订阅的id
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,6 +132,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mAdView = (AdView)findViewById(R.id.adView);
         AdRequest adRe = new AdRequest.Builder().build();
         mAdView.loadAd(adRe);
+
+        if (PayStatusUtil.isSubAvailable()) {
+            mAdView.setVisibility(View.GONE);
+        } else {
+            mAdView.setVisibility(View.VISIBLE);
+        }
 
         EventBus.getDefault().register(this);
 
@@ -275,6 +283,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 try {
                     //先拿到单例模式里面的 实例  因为封装的是MAP  传入KEY去拿值 在显现广告
+                    if (!PayStatusUtil.isSubAvailable())
                     Advertisement.getInstance().show(getString(R.string.ad_unit_id));
                 } catch (Exception e) {
                     Log.d(TAG, "setContentView: 显示广告失败");
@@ -416,10 +425,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         list_fragment=new ArrayList<BaseFragment>();
         dynamicFragment=new MapFragment();
         staticFragment=new PokedexFragment();
+        mapFragment2 = new MapTwoFragment();
         wuWuFragment=new GuideFragment();
         jumpGooglePlayFragment=new JumpGooglePlayFragment();
         videoListFragment=new VideoListFragment();
         list_fragment.add(dynamicFragment);
+        list_fragment.add(mapFragment2);
         list_fragment.add(videoListFragment);
         list_fragment.add(jumpGooglePlayFragment);
         list_fragment.add(staticFragment);
@@ -428,6 +439,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         listTitle=new ArrayList<>();
 
         listTitle.add(getResources().getString(R.string.corpe));
+        listTitle.add(getResources().getString(R.string.map));
         listTitle.add("Video");
         listTitle.add(getResources().getString(R.string.recommend));
         listTitle.add(getResources().getString(R.string.botany));
@@ -753,6 +765,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             } else {//走正常的流程
 
                 initGoogleBilling();
+            }
+        } else if (eventModel.code == Constant.Event.DISS_DIALOG) {
+            if (mAdView != null) {
+                mAdView.setVisibility(View.GONE);
+            }
+        } else if (eventModel.code == Constant.Event.SHOW_DIALOG) {
+            if (mAdView != null) {
+                mAdView.setVisibility(View.VISIBLE);
             }
         }
 
