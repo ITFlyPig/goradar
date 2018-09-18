@@ -3,15 +3,12 @@ package com.eighteen.goradar.fragment;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.Gravity;
@@ -25,22 +22,17 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.eighteen.goradar.PreferenceUtil;
+import com.eighteen.goradar.R;
 import com.eighteen.goradar.model.EventModel;
 import com.eighteen.goradar.util.Constant;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.eighteen.goradar.PreferenceUtil;
-import com.eighteen.goradar.R;
-import com.eighteen.goradar.activity.GamesActivity;
-import com.eighteen.goradar.activity.MapsActivity;
-import com.eighteen.goradar.activity.StartActivity;
 import com.umeng.analytics.MobclickAgent;
 import com.unity3d.ads.IUnityAdsListener;
 import com.unity3d.ads.UnityAds;
@@ -51,7 +43,6 @@ import com.unity3d.ads.metadata.PlayerMetaData;
 import com.vungle.publisher.EventListener;
 import com.vungle.publisher.VunglePub;
 
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONObject;
@@ -61,23 +52,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Locale;
-import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by dellpc on 2016/11/5.
  */
 public class MapFragment extends BaseFragment {
     public final static String TAG="MapFragment";
-    @Bind(R.id.webView)
+    @BindView(R.id.webView)
     WebView mWebView;
     //    @Bind(R.id.maps_nativeAdView)
 //    NativeExpressAdView nativeExpressAdView;
     private TextView load;
     private ProgressBar pb;
     private String language,country;
-    @Bind(R.id.adView)
+    @BindView(R.id.adView)
     AdView mAdView;
     private final static String fileName = "GuideData.json";
     String addStr;

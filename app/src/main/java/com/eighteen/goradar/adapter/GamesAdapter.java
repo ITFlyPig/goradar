@@ -10,13 +10,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.eighteen.goradar.R;
 import com.eighteen.goradar.activity.WebViewActivity;
 import com.eighteen.goradar.model.GamesModel;
-import com.eighteen.goradar.R;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -56,9 +56,9 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.DynamicViewH
     }
 
     public  class DynamicViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.name)
+        @BindView(R.id.name)
         TextView mTextView;
-        @Bind(R.id.pic)
+        @BindView(R.id.pic)
         ImageView pic;
 
         DynamicViewHolder(View view) {

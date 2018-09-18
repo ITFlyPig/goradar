@@ -10,12 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.eighteen.goradar.PokemonListInfoActivity;
-import com.eighteen.goradar.model.DataModel;
 import com.eighteen.goradar.R;
+import com.eighteen.goradar.model.DataModel;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -62,15 +62,15 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.DynamicVie
     }
 
     public  class DynamicViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.image_icon)
+        @BindView(R.id.image_icon)
         ImageView image_icon;
-        @Bind(R.id.type_one)
+        @BindView(R.id.type_one)
         TextView type_one;
-        @Bind(R.id.textNum)
+        @BindView(R.id.textNum)
         TextView textNum;
-        @Bind(R.id.text_title)
+        @BindView(R.id.text_title)
         TextView text_title;
-        @Bind(R.id.type_two)
+        @BindView(R.id.type_two)
         TextView type_two;
 
         DynamicViewHolder(View view) {

@@ -18,29 +18,29 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.eighteen.goradar.R;
 import com.eighteen.goradar.db.AssetsDatabaseManager;
 import com.eighteen.goradar.util.Advertisement;
-import com.eighteen.goradar.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.Locale;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by dellpc on 2016/11/5.
  */
 public class GuideFragment extends BaseFragment {
     private static final String TAG = "GuideFragment";
-    @Bind(R.id.webView)
+    @BindView(R.id.webView)
     WebView webview;
-    @Bind(R.id.left)
+    @BindView(R.id.left)
     ImageView goback;
-    @Bind(R.id.right)
+    @BindView(R.id.right)
     ImageView goForward;
-    @Bind(R.id.adView)
+    @BindView(R.id.adView)
     AdView mAdView;
     private String country,language;
     private TextView load;

@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.eighteen.goradar.PokemonListInfoActivity;
-import com.eighteen.goradar.model.SearchModel;
 import com.eighteen.goradar.R;
+import com.eighteen.goradar.model.SearchModel;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -48,7 +48,7 @@ public class PokedexListAdapter extends RecyclerView.Adapter<PokedexListAdapter.
 
     public  class DynamicViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.textview_text)
+        @BindView(R.id.textview_text)
         TextView textViewtitle;
 
         DynamicViewHolder(View view) {

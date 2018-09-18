@@ -53,21 +53,21 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Locale;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by dellpc on 2016/11/5.
  */
 public class MapTwoFragment extends BaseFragment {
     public final static String TAG="MapFragment";
-    @Bind(R.id.webView)
+    @BindView(R.id.webView)
     WebView mWebView;
     //    @Bind(R.id.maps_nativeAdView)
 //    NativeExpressAdView nativeExpressAdView;
     private TextView load;
     private ProgressBar pb;
     private String language,country;
-    @Bind(R.id.adView)
+    @BindView(R.id.adView)
     AdView mAdView;
     private final static String fileName = "GuideData.json";
     String addStr;

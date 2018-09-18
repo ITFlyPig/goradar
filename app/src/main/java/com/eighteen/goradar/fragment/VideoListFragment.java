@@ -3,19 +3,14 @@ package com.eighteen.goradar.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.eighteen.goradar.R;
 import com.eighteen.goradar.activity.YoutubeActivity;
@@ -31,7 +26,7 @@ import com.umeng.analytics.MobclickAgent;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by dellpc on 2016/11/5.
@@ -45,7 +40,7 @@ public class VideoListFragment extends BaseFragment {
     private VideoDao mVideoDao;
     private ArrayList<VideoModel> listdata;
     private VideoAdapter adapter;
-    @Bind(R.id.adView)
+    @BindView(R.id.adView)
     AdView mAdView;
 
     @Override

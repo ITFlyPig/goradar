@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!--获取网络信息状态，如当前的网络连接是否有效-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
     <!--允许程序获取当前或最近运行的应用-->
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="com.gmap.test.permission.MAPS_RECEIVE" />

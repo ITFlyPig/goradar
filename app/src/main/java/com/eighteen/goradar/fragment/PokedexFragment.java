@@ -8,8 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.eighteen.goradar.R;
 import com.eighteen.goradar.adapter.PlantsAdapter;
 import com.eighteen.goradar.db.AddressHelper;
 import com.eighteen.goradar.db.AssetsDatabaseManager;
@@ -18,22 +17,23 @@ import com.eighteen.goradar.model.DataModel;
 import com.eighteen.goradar.model.SearchModel;
 import com.eighteen.goradar.util.Advertisement;
 import com.eighteen.goradar.view.SpacesItemDecoration;
-import com.eighteen.goradar.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by dellpc on 2016/11/5.
  */
 public class PokedexFragment extends BaseFragment {
     public final static String TAG="PokedexFragment";
-    @Bind(R.id.recyclerView)
+    @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-    @Bind(R.id.adView)
+    @BindView(R.id.adView)
     AdView mAdView;
     //获取db数据库
     private UserDao mUserDao;
