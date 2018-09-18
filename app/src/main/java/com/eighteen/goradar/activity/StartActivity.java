@@ -132,6 +132,11 @@ public class StartActivity extends Activity {
             }
         };
         timer.start();
+
+
     }
+
+
+
 
 }

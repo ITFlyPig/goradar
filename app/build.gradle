@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '25.0.3'
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.eighteen.goradar"
@@ -11,6 +11,7 @@ android {
         versionCode 25
         versionName "1.4"
         multiDexEnabled true
+        flavorDimensions "versionCode"
 
     }
 
@@ -26,22 +27,35 @@ android {
     }
 
     //修改生成的apk名字
-    applicationVariants.all{ variant->
-        variant.outputs.each { output->
-            def oldFile = output.outputFile
-            def newName = '';
-            if(variant.buildType.name.equals('release')){
-//                println(variant.productFlavors[0].name)
-                def releaseApkName = 'android'  + '-' + variant.productFlavors[0].name + '-GO Radar-.apk'
-                output.outputFile = new File(oldFile.parent, releaseApkName)
-            }
-            if(variant.buildType.name.equals('beta')){
-                newName = oldFile.name.replace(".apk", "-v" + "-build" + getDate() + ".apk")
-                output.outputFile = new File(oldFile.parent, newName)
-            }
-            if(variant.buildType.name.equals('debug')){
-
-            }
+    applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+//        def oldFile = output.outputFile
+//            def newName = '';
+//            if (variant.buildType.name.equals('release')) {
+////                println(variant.productFlavors[0].name)
+//                def releaseApkName = 'android' + '-' + variant.productFlavors[0].name + '-GO Radar-.apk'
+//                output.outputFile = new File(oldFile.parent, releaseApkName)
+//            }
+//            if (variant.buildType.name.equals('beta')) {
+//                newName = oldFile.name.replace(".apk", "-v" + "-build" + getDate() + ".apk")
+//                output.outputFile = new File(oldFile.parent, newName)
+//            }
+//            if (variant.buildType.name.equals('debug')) {
+//
+//            }
+//        }
+        //这个修改输出的APK路径
+        if (variant.buildType.name != "debug") {//防止AS无法安装debug包(apk)
+            variant.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath + "/apk")
+        }
+        variant.getPackageApplication().outputScope.apkDatas.forEach { apkData ->
+            //这个修改输出APK的文件名
+            apkData.outputFileName = "AppName-" +
+                    variant.versionName + "_" +
+                    variant.flavorName + "_" +
+                    variant.buildType.name + "_" +
+//                    variant.signingConfig.name +
+                    ".apk"
         }
     }
 
@@ -82,48 +96,51 @@ repositories {
 
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
     //有关iv计算的的示图
-    compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
-    compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.0@aar'
-    compile ('com.google.android.gms:play-services:11.0.1') {
+    implementation 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:1.6.0@aar'
+    implementation('com.google.android.gms:play-services:11.0.1') {
         exclude group: 'com.android.support'
     }
     //admob
-    compile 'com.google.firebase:firebase-ads:11.0.1'
-    compile 'com.google.android.gms:play-services-ads:11.0.1'
+    implementation 'com.google.firebase:firebase-ads:11.0.1'
+    implementation 'com.google.android.gms:play-services-ads:11.0.1'
 
-    compile ('com.facebook.android:audience-network-sdk:4.+') {
+    implementation('com.facebook.android:audience-network-sdk:4.+') {
         exclude group: 'com.android.support'
 
     }
-    compile ('com.google.ads.mediation:facebook:4.23.0.0') {
+    implementation('com.google.ads.mediation:facebook:4.23.0.0') {
         exclude group: 'com.android.support'
 
     }
-    compile files('libs/MobFox-Android-SDK-Core-2.2.0.jar')
-    compile(name: 'VungleAdapter', ext: 'aar')
-    compile(name: 'unity-ads', ext: 'aar')
-    compile(name: 'android-ad-sdk', ext: 'aar')
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    implementation files('libs/MobFox-Android-SDK-Core-2.2.0.jar')
+    implementation(name: 'VungleAdapter', ext: 'aar')
+    implementation(name: 'unity-ads', ext: 'aar')
+    implementation(name: 'android-ad-sdk', ext: 'aar')
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
 
-    compile 'com.android.support:support-v4:26+'
-    compile 'com.android.support:recyclerview-v7:26+'
-    compile 'com.android.support:support-annotations:25.3.1'
-    compile 'com.android.support:cardview-v7:26+'
-    compile 'com.android.support:appcompat-v7:26+'
-    compile 'com.android.support:percent:26+'
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.android.support:multidex:1.0.1'
-    compile 'com.android.support:design:26+'
+    implementation 'com.android.support:support-v4:26+'
+    implementation 'com.android.support:recyclerview-v7:26+'
+    implementation 'com.android.support:support-annotations:25.3.1'
+    implementation 'com.android.support:cardview-v7:26+'
+    implementation 'com.android.support:appcompat-v7:26+'
+    implementation 'com.android.support:percent:26+'
+    implementation 'com.jakewharton:butterknife:7.0.1'
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'com.android.support:design:26+'
 
-    compile 'com.umeng.analytics:analytics:latest.integration'
+    implementation 'com.umeng.analytics:analytics:latest.integration'
 
     //谷歌内购
-    compile 'com.android.billingclient:billing:1.0'
+    implementation 'com.android.billingclient:billing:1.0'
 
-    compile 'org.greenrobot:eventbus:3.0.0'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+
+    //权限申请
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
 }
 apply plugin: 'com.google.gms.google-services'
 
