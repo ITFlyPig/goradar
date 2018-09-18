@@ -27,6 +27,7 @@ public class NetReceiver extends BroadcastReceiver {
 	        System.out.println("wifi状态：" + NetUtils.isWifiConnected(context));
 	        System.out.println("移动网络状态：" + NetUtils.isMobileConnected(context));
 	        System.out.println("网络连接类型：" + NetUtils.getConnectedType(context));
+	        /*
 			dialog = new Dialog(context, R.style.MyDialog);
 	        if (isConnected) {
 				dialog.cancel();
@@ -56,6 +57,7 @@ public class NetReceiver extends BroadcastReceiver {
 				dialog.show();
 //
 	        }
+	        */
 		}
 	}
 	// 网络提示dialog
