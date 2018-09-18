@@ -1,10 +1,12 @@
 package com.eighteen.goradar.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,21 +17,26 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.eighteen.goradar.util.StatusBarUtil;
 import com.eighteen.goradar.R;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.Locale;
 
+import io.reactivex.functions.Consumer;
 
-public class StartActivity extends Activity {
+
+public class StartActivity extends FragmentActivity {
     private static final String TAG = StartActivity.class.getSimpleName();
     private NativeExpressAdView adView;
     private TextView timeTextView;
     private ImageView img_start;
+    private  final RxPermissions rxPermissions = new RxPermissions(this);;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         StatusBarUtil.setColor(this, getResources().getColor(R.color.appcolor));
-        initView();
+        getPermission();
+
     }
 
     private void initView(){
@@ -45,9 +52,7 @@ public class StartActivity extends Activity {
             adView.setVisibility(View.GONE);
             new Handler().postDelayed(new Runnable() {
                 public void run() {
-                    Intent intent = new Intent(StartActivity.this,MapsActivity.class);//新建一个意图，也就是跳转的界面
-                    startActivity(intent);//开始跳转
-                    finish();
+                   start();
                 }
             }, 2000);
         }else{
@@ -126,9 +131,7 @@ public class StartActivity extends Activity {
             @Override
             public void onFinish() {
                 Log.d(TAG, "onFinish -- 倒计时结束");
-                Intent intent = new Intent(StartActivity.this,MapsActivity.class);//新建一个意图，也就是跳转的界面
-                startActivity(intent);//开始跳转
-                finish();
+               start();
             }
         };
         timer.start();
@@ -137,6 +140,29 @@ public class StartActivity extends Activity {
     }
 
 
+    private void getPermission() {
+        rxPermissions.request(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean granted) throws Exception {
+                        if (granted) {
+                            initView();
+                        }else {
+                            getPermission();
+                        }
+
+                    }
+                });
+    }
+
+
+    private void start() {
+        Intent intent = new Intent(StartActivity.this,MapsActivity.class);//新建一个意图，也就是跳转的界面
+        startActivity(intent);//开始跳转
+        finish();
+    }
 
 
 }
