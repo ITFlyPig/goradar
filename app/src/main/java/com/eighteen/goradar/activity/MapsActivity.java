@@ -105,7 +105,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private MyOnQueryFinishedListener mOnQueryFinishedListener = new MyOnQueryFinishedListener();//查询回调接口
     private MyOnStartSetupFinishedListener mOnStartSetupFinishedListener = new MyOnStartSetupFinishedListener();//启动结果回调接口
     private GoogleBillingUtil googleBillingUtil;
-    private static final String SUB_ID = "goradar_subscription02_1month";//订阅的id
+    private static  String SUB_ID;//订阅的id
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,6 +140,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         EventBus.getDefault().register(this);
+
+        SUB_ID = GoogleBillingUtil.getInstance().subsSKUS[0];
 
     }
 
