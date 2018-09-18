@@ -5,6 +5,7 @@
 
     <string name="content">どこにどんな希少のポケモンが出現するのかを教えてくれる地図です。</string>
     <string name="unity">トライアル7日間無料</string>
+    <string name="lv_calc">個体値</string>
 
 
 </resources>

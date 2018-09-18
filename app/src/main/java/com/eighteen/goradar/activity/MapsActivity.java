@@ -433,8 +433,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         videoListFragment=new VideoListFragment();
         list_fragment.add(dynamicFragment);
         list_fragment.add(mapFragment2);
-        list_fragment.add(videoListFragment);
-        list_fragment.add(jumpGooglePlayFragment);
+//        list_fragment.add(videoListFragment);
+//        list_fragment.add(jumpGooglePlayFragment);
         list_fragment.add(staticFragment);
         list_fragment.add(wuWuFragment);
 
@@ -442,14 +442,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         listTitle.add(getResources().getString(R.string.corpe));
         listTitle.add(getResources().getString(R.string.map));
-        listTitle.add("Video");
-        listTitle.add(getResources().getString(R.string.recommend));
+//        listTitle.add("Video");
+//        listTitle.add(getResources().getString(R.string.recommend));
         listTitle.add(getResources().getString(R.string.botany));
-        listTitle.add(getResources().getString(R.string.level_screen));
+        listTitle.add(getResources().getString(R.string.lv_calc));
 
         liveHomepageAdapter=new MyAdapter(mFragmentManager,list_fragment,listTitle);
         mUIViewpagerlive.setAdapter(liveHomepageAdapter);
         mUITablayoutlive.setViewPager(mUIViewpagerlive);
+        mUIViewpagerlive.setOffscreenPageLimit(4);
         mUITablayoutlive.getTabAt(0).setSelected(true);
         final LinearLayout lyTabs = (LinearLayout) mUITablayoutlive.getChildAt(0);
         changeTabsTitleTypeFace(lyTabs, 0);
