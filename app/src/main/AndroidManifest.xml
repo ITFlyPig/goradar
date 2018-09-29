@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.eighteen.goradar">
+    package="com.nineteen.pokeradar">
 
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
     <uses-permission
@@ -90,6 +90,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/apptheme" />
         <activity
+            android:name=".activity.MoreActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/apptheme" />
+        <activity
             android:name=".activity.MapsActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar" />
@@ -123,7 +127,7 @@
         <!-- 友盟 -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="592655881061d22f9a000e57" />
+            android:value="5ba21f2df1f556bed7000062" />
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="${UMENG_CHANNEL_VALUE}" />

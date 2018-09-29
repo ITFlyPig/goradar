@@ -13,6 +13,7 @@
         >
         <RelativeLayout
             android:id="@+id/relative_top"
+            android:visibility="gone"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:background="#0499ea" >
@@ -31,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/more"
+                android:background="@drawable/more_us"
                 android:onClick="onMoreButtonClick"
                 />
 
@@ -57,8 +58,9 @@
 
         </RelativeLayout>
 
+
+
         <fragment
-            android:layout_below="@id/relative_top"
             android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -75,6 +77,38 @@
             android:layout_alignParentBottom="true"
             ads:adSize="BANNER"
             ads:adUnitId="@string/bannerunit"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv_gym"
+                android:padding="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/gym"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_circle"/>
+            <ImageView
+                android:id="@+id/iv_search"
+                android:padding="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/seach"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_circle"/>
+            <ImageView
+                android:padding="6dp"
+                android:id="@+id/iv_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/more_us"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_circle"/>
+        </LinearLayout>
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/feimeiguo_rela"

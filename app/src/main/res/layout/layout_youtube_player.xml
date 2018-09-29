@@ -5,7 +5,7 @@
              android:orientation="vertical"
              android:background="@color/white">
 
-    <com.eighteen.goradar.player.YoutubePlayerView
+    <com.nineteen.pokeradar.player.YoutubePlayerView
         android:id="@+id/youtubePlayerView"
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"

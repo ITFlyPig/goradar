@@ -26,4 +26,5 @@
     <color name="item_text_color">#5e5e5e</color>
     <color name="fa">#fafafa</color>
     <color name="tab_bg">#ffffff</color>
+    <color name="app">#99000000</color>
 </resources>

@@ -3,9 +3,13 @@
 
     <string name="title">ポケモン 地図PRO</string>
 
-    <string name="content">どこにどんな希少のポケモンが出現するのかを教えてくれる地図です。</string>
+    <string name="content">ポケモン\n
+ポケモン地図PRO: 捕捉rare Pokemon.\n
+PROへのアップデート方法は？あなたは以下を完了しなければなりません：\n
+1.評価私たち：5★\n
+2.7日間のPRO体験無料</string>
     <string name="unity">トライアル7日間無料</string>
     <string name="lv_calc">個体値</string>
-
+    <string name="rating">評価私たち5★</string>
 
 </resources>

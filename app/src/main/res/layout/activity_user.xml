@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context="com.eighteen.goradar.activity.UserActivity">
+    tools:context="com.nineteen.pokeradar.activity.UserActivity">
 
     <RelativeLayout
         android:id="@+id/relative_top"

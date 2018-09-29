@@ -12,8 +12,15 @@
     <string name="botany">圖鑑 </string>
     <string name="level_screen">攻略</string>
     <string name="title">取得專業版寶可夢雷達地圖</string>
-    <string name="content">專業版寶可夢雷達地圖，抓住更多稀有的精靈寶可夢</string>
-    <string name="rating">5星評分鼓勵</string>
+    <string name="content">寶可夢雷達專業版：捕捉更多稀有精靈\n
+如何取得專業版？必須按如下步驟完成\n
+1.給此應用程式5星評價\n
+2.然後就可以免費試用7天了
+
+</string>
+    <string name="rating">5星評價鼓勵</string>
     <string name="unity">免費試用7天</string>
     <string name="lv_calc">個體值</string>
+    <string name="more">更多</string>
+    <string name="feedback">意見反映</string>
 </resources>

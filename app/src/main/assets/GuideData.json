@@ -1,9 +1,9 @@
 {
-    "umengkeyid":"592655881061d22f9a000e57",
-    "bundleid":"com.eighteen.goradar",
-    "ADUnitID_Banner":"ca-app-pub-2132020239925709/4306374471",
+    "umengkeyid":"5ba21f2df1f556bed7000062",
+    "bundleid":"com.nineteen.pokeradar",
+    "ADUnitID_Banner":"ca-app-pub-9224978836240566/5903121388",
     "ADUnitID_Native":"ca-app-pub-2132020239925709/7259840870",
-    "ADUnitID_Screen":"ca-app-pub-2132020239925709/5783107677",
+    "ADUnitID_Screen":"ca-app-pub-9224978836240566/1734869561",
     "url_en":"https://pokemon.gameinfo.io/en/tools/iv-calculator",
     "url_zh-tw":"https://pokemon.gameinfo.io/zh-tw/tools/iv-calculator",
     "url_ja":"https://pokemon.gameinfo.io/ja/tools/iv-calculator",
@@ -20,5 +20,6 @@
     "helpUrl_jp":"https://gujia.kuaizhan.com/91/84/p4328830328cb06",
     "map2Url_en":"https://pokehuntr.com/",
     "map2Url_zh-tw":"https://www.pokemap.net/",
-    "map2Url_jp":"https://pokehuntr.com/"
+    "map2Url_jp":"https://pokehuntr.com/",
+    "PrivacyPolicy_url":"https://appnews.kuaizhan.com/65/31/p55808019929c16"
 }

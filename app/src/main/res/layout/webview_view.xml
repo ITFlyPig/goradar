@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:background="#ffffff"
-    tools:context="com.eighteen.goradar.activity.WebViewActivity" >
+    tools:context="com.nineteen.pokeradar.activity.WebViewActivity" >
     <ProgressBar
         android:id="@+id/pb"
         android:layout_alignParentTop="true"

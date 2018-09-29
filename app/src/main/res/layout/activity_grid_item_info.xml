@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#eeeeee"
     android:layout_margin="1dp"
-    tools:context="com.eighteen.goradar.activity.GridItemInfoActivity">
+    tools:context="com.nineteen.pokeradar.activity.GridItemInfoActivity">
 
     <RelativeLayout
         android:id="@+id/relative_title"

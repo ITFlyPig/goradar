@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eeedf5"
-    tools:context="com.eighteen.goradar.PokemonListInfoActivity">
+    tools:context="com.nineteen.pokeradar.PokemonListInfoActivity">
     <RelativeLayout
         android:id="@+id/relative_title"
         android:layout_width="fill_parent"

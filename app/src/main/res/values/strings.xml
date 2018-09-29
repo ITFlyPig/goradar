@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">GO Radar</string>
+    <string name="app_name">Live GO Trackerr</string>
 
 
     <string name="okay">OK</string>
     <string name="dialogtitle">No Internet Connection </string>
     <string name="dialogcontent">You must be connected to the internet to visit some page.</string>
-    <string name="bannerunit">ca-app-pub-2132020239925709/4306374471</string>
-    <string name="ad_unit_id">ca-app-pub-2132020239925709/5783107677</string>
-    <string name="openscreen">ca-app-pub-2132020239925709/7259840870</string>
+    <string name="bannerunit">ca-app-pub-9224978836240566/5903121388</string>
+    <string name="ad_unit_id">ca-app-pub-2132020239925709/7259840870</string>
+    <string name="openscreen">ca-app-pub-9224978836240566/1734869561</string>
 
     <string name="skip">Skip</string>
 
@@ -21,9 +21,12 @@
     <string name="lv_calc">IV Calc</string>
 
     <string name="title">Update to Radar Map PRO</string>
-    <string name="content">Radar Map PRO for Pokemon，find more rare pokemon.
+    <string name="content">Poke Radr PRO: find more rare Pokemon.\n
+How to update to PRO?You must finish the followings:\n
+1.Give our app a 5 stars rating\n
+2.Then you can free trial PRO 7 days
 </string>
-    <string name="rating">5 Star-rating</string>
+    <string name="rating">Give a 5 stars rating</string>
     <string name="unity">Free Trial 7 Days.</string>
 
     <!-- <string name="fackbook">1749569865366437_1749570985366325</string>
@@ -75,4 +78,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="more">More</string>
+
+    <string name="feedback">Feedback</string>
+
+    <string name="policy">Privacy Policy</string>
+    <string name="trial">Free Trial PRO</string>
 </resources>
